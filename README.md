@@ -25,7 +25,7 @@ https://colorhunt.co/palette/454545ff6000ffa559ffe6c7
 
 ## Installation
 
-1. Clone the repository: `git clone https://github.com/Lionel-hub1/diy-blog.git`
+1. Clone the repository: `git clone https://github.com/Lionel-hub1/diyblog_frontend.git`
 2. Install dependencies: `npm install`
 3. Set up environment variables: Create a `.env` file and add the necessary variables (e.g., database connection string, JWT secret)
 4. Start the development server: `npm start`
