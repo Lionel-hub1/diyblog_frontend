@@ -145,7 +145,7 @@ const FilterTabs = () => {
       </div>
       <div className="px-24 py-10">
         {filteredArticles.map((article, index) => (
-          <div key={index} className=" shadow-md mb-8">
+          <div key={index} className="max-h-[15rem] shadow-md mb-8">
             <div className="flex">
               <img
                 className="w-[15rem] h-[15rem] object-cover"
@@ -153,11 +153,11 @@ const FilterTabs = () => {
                 alt=""
               />
               <div className="p-4">
-                <h2 className="text-2xl font-bold">
+                <h2 className="text-2xl font-bold line-clamp-1">
                   {article.title} {article.type}
                 </h2>
-                <p className="text-sm mt-2">{article.date}</p>
-                <p className="mt-4">{article.introduction}</p>
+                <p className="text-sm mt-2 line-clamp-1">{article.date}</p>
+                <p className="mt-4 line-clamp-4">{article.introduction}</p>
                 <div className="flex flex-row justify-between mt-2">
                   <Link
                     to={`/article/${article.id}`}

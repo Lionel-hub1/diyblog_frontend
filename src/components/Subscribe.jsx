@@ -8,7 +8,7 @@ const Subscribe = () => {
     setEmail("");
   };
   return (
-    <div className="flex flex-col mr-24 mt-16">
+    <div className="flex flex-col ml-24 xl:ml-0 mr-24 mb-16 xl:mb-0 xl:mt-16">
       <div className="uppercase mb-10 border-b-[2px] text-[#454545] font-semibold">
         SUbscribe to our newsletter
       </div>
@@ -18,7 +18,7 @@ const Subscribe = () => {
       </p>
       <form className="flex flex-row space-x-4" onSubmit={handleSubmit}>
         <input
-          type="text"
+          type="email"
           placeholder="Enter your email"
           className="border-2 p-2 focus:outline-none"
           value={email}

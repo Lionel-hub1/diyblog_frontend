@@ -2,8 +2,8 @@ import image1 from "../assets/images/fire-making.jpg";
 import image2 from "../assets/images/lamp.jpg";
 import image3 from "../assets/images/carpentry.jpg";
 import { Link } from "react-router-dom";
-import FilterTabs from "../components/filter_tabs";
-import Subscribe from "../components/subscribe";
+import FilterTabs from "../components/Filter_tabs";
+import Subscribe from "../components/Subscribe";
 
 const Home = () => {
   const articles = [
@@ -32,13 +32,13 @@ const Home = () => {
 
   return (
     <>
-      <div className="grid grid-cols-2 gap-1 px-24 py-1 bg-[#454545] shadow-md">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-1 px-24 py-1 bg-[#454545] shadow-md">
         {articles.map((article, index) => (
           <Link
             key={index}
             to={`/article/${article.id}`}
             className={`relative border-[1px] border-[#FFE6C7] shadow-lg ${
-              index === 0 && "row-span-2 -mb-10"
+              index === 0 && "row-span-2 md:-mb-10"
             } ${index === 2 && "-mb-10"}`}
           >
             <img
@@ -62,7 +62,7 @@ const Home = () => {
           </Link>
         ))}
       </div>
-      <div className="flex flex-row">
+      <div className="flex flex-col xl:flex-row">
         <FilterTabs />
         <Subscribe />
       </div>

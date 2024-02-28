@@ -1,6 +1,7 @@
 import { Outlet, Link } from "react-router-dom";
 
 const Layout = () => {
+  const activeness = "border-b-2 border-[#FFA559]";
   return (
     <>
       <header className="text-gray-600 body-font bg-[#454545] sticky top-0 z-10">
@@ -13,7 +14,7 @@ const Layout = () => {
             <span className="text-3xl font-semibold text-[#FFA559]">Blog</span>
           </Link>
           <nav className="md:ml-auto flex flex-wrap font-semibold items-center text-[#FFE6C7] justify-center space-x-10">
-            <Link to="" className="hover:text-[#FFA559]">
+            <Link to="" className={`hover:text-[#FFA559] ${activeness}`}>
               Home
             </Link>
             <Link to="blogs" className="hover:text-[#FFA559]">
