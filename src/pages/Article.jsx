@@ -34,6 +34,7 @@ const Article = () => {
       },
     ],
   });
+  const [comments, setComments] = useState(article.comments);
 
   const [name, setName] = useState("");
   const [comment, setComment] = useState("");
@@ -52,6 +53,8 @@ const Article = () => {
       ...prevArticle,
       comments: [...prevArticle.comments, newComment],
     }));
+
+    setComments((prevComments) => [...prevComments, newComment]);
 
     setName("");
     setComment("");
@@ -96,19 +99,31 @@ const Article = () => {
             </div>
           </form>
         </div>
-        <div className="w-1/2 max-h-80 px-4 rounded border-2 border-[#454545] overflow-scroll">
+        <div className="w-1/2  px-4">
           <h1 className="text-3xl font-bold sticky top-0 bg-white">
-            Comments ({article.comments.length})
+            Comments ({comments.length})
           </h1>
-          {article.comments.map((comment, index) => (
-            <div key={index} className="mt-5">
-              <h2 className="text-xl font-semibold underline">
-                {comment.name}
-              </h2>
-              <p className="text-sm">{new Date(comment.date).toLocaleDateString('en-US', { month: 'long', day: '2-digit', year: 'numeric' }).toUpperCase()}</p>
-              <p className="mt-2">{comment.comment}</p>
-            </div>
-          ))}
+          {comments ? (
+            comments.map((comment, index) => (
+              <div key={index} className="mt-5">
+                <h2 className="text-xl font-semibold underline">
+                  {comment.name}
+                </h2>
+                <p className="text-sm">
+                  {new Date(comment.date)
+                    .toLocaleDateString("en-US", {
+                      month: "long",
+                      day: "2-digit",
+                      year: "numeric",
+                    })
+                    .toUpperCase()}
+                </p>
+                <p className="mt-2">{comment.comment}</p>
+              </div>
+            ))
+          ) : (
+            <p>No comments yet</p>
+          )}
         </div>
       </div>
     </div>

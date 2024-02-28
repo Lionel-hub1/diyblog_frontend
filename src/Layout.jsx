@@ -1,6 +1,16 @@
 import { Outlet, Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 const Layout = () => {
+  const location = useLocation();
+
+  const paths = [
+    { path: "/", name: "Home" },
+    { path: "/blogs", name: "Blogs" },
+    { path: "/services", name: "Services" },
+    { path: "/contact", name: "Contact" },
+  ];
+
   const activeness = "border-b-2 border-[#FFA559]";
   return (
     <>
@@ -14,18 +24,19 @@ const Layout = () => {
             <span className="text-3xl font-semibold text-[#FFA559]">Blog</span>
           </Link>
           <nav className="md:ml-auto flex flex-wrap font-semibold items-center text-[#FFE6C7] justify-center space-x-10">
-            <Link to="" className={`hover:text-[#FFA559] ${activeness}`}>
-              Home
-            </Link>
-            <Link to="blogs" className="hover:text-[#FFA559]">
-              Blogs
-            </Link>
-            <Link to="services" className="hover:text-[#FFA559]">
-              Services
-            </Link>
-            <Link to="contact" className="hover:text-[#FFA559]">
-              Contact
-            </Link>
+            {paths.map((path, index) => {
+              return (
+                <Link
+                  key={index}
+                  to={path.path}
+                  className={`${
+                    location.pathname === path.path ? activeness : ""
+                  }`}
+                >
+                  {path.name}
+                </Link>
+              );
+            })}
           </nav>
           <button className="items-center bg-[#FFE6C7] border-0 font-semibold py-1 px-3 ml-10 focus:outline-none hover:bg-[#FFA559] hover:text-[#FFE6C7] rounded mt-4 md:mt-0">
             Login
