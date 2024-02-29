@@ -103,7 +103,7 @@ const Article = () => {
           <h1 className="text-3xl font-bold sticky top-0 bg-white">
             Comments ({comments.length})
           </h1>
-          {comments ? (
+          {comments.length !== 0 ? (
             comments.map((comment, index) => (
               <div key={index} className="mt-5">
                 <h2 className="text-xl font-semibold underline">
@@ -122,7 +122,7 @@ const Article = () => {
               </div>
             ))
           ) : (
-            <p>No comments yet</p>
+            <p className="mt-5">No comments yet</p>
           )}
         </div>
       </div>

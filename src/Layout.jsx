@@ -12,12 +12,13 @@ const Layout = () => {
   ];
 
   const activeness = "border-b-2 border-[#FFA559]";
+
   return (
     <>
       <header className="text-gray-600 body-font bg-[#454545] sticky top-0 z-10">
         <div className="container mx-auto flex flex-wrap py-5 px-14 flex-col md:flex-row items-center">
           <Link
-            to=""
+            to="/"
             className="flex title-font font-medium items-center mb-4 md:mb-0"
           >
             <span className="text-3xl font-black text-[#FFE6C7]">DIY</span>{" "}
@@ -31,7 +32,7 @@ const Layout = () => {
                   to={path.path}
                   className={`${
                     location.pathname === path.path ? activeness : ""
-                  }`}
+                  } hover:text-[#FFA559] transition duration-300 ease-in-out`}
                 >
                   {path.name}
                 </Link>
