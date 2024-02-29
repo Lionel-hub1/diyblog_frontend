@@ -27,7 +27,7 @@ const FilterTabs = () => {
       date: "JANUARY 01, 2024",
       type: "DIY",
       comments: 5,
-      introduction:
+      content:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, repudiandae possimus! Quam deserunt perspiciatis sed modi recusandae porro, inventore ducimus maiores natus? Obcaecati amet, fuga ex minus cupiditate facilis aperiam.",
     },
     {
@@ -37,7 +37,7 @@ const FilterTabs = () => {
       date: "JANUARY 01, 2024",
       type: "Home Improvement",
       comments: 0,
-      introduction:
+      content:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, repudiandae possimus! Quam deserunt perspiciatis sed modi recusandae porro, inventore ducimus maiores natus? Obcaecati amet, fuga ex minus cupiditate facilis aperiam.",
     },
     {
@@ -47,7 +47,7 @@ const FilterTabs = () => {
       date: "JANUARY 01, 2024",
       type: "Decor",
       comments: 3,
-      introduction:
+      content:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, repudiandae possimus! Quam deserunt perspiciatis sed modi recusandae porro, inventore ducimus maiores natus? Obcaecati amet, fuga ex minus cupiditate facilis aperiam.",
     },
     {
@@ -57,7 +57,7 @@ const FilterTabs = () => {
       date: "JANUARY 01, 2024",
       type: "Renovation",
       comments: 2,
-      introduction:
+      content:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, repudiandae possimus! Quam deserunt perspiciatis sed modi recusandae porro, inventore ducimus maiores natus? Obcaecati amet, fuga ex minus cupiditate facilis aperiam.",
     },
     {
@@ -67,7 +67,7 @@ const FilterTabs = () => {
       date: "JANUARY 01, 2024",
       type: "DIY",
       comments: 1,
-      introduction:
+      content:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, repudiandae possimus! Quam deserunt perspiciatis sed modi recusandae porro, inventore ducimus maiores natus? Obcaecati amet, fuga ex minus cupiditate facilis aperiam.",
     },
     {
@@ -77,7 +77,7 @@ const FilterTabs = () => {
       date: "JANUARY 01, 2024",
       type: "Home Improvement",
       comments: 4,
-      introduction:
+      content:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, repudiandae possimus! Quam deserunt perspiciatis sed modi recusandae porro, inventore ducimus maiores natus? Obcaecati amet, fuga ex minus cupiditate facilis aperiam.",
     },
     {
@@ -87,7 +87,7 @@ const FilterTabs = () => {
       date: "JANUARY 01, 2024",
       type: "Decor",
       comments: 6,
-      introduction:
+      content:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, repudiandae possimus! Quam deserunt perspiciatis sed modi recusandae porro, inventore ducimus maiores natus? Obcaecati amet, fuga ex minus cupiditate facilis aperiam.",
     },
     {
@@ -97,7 +97,7 @@ const FilterTabs = () => {
       date: "JANUARY 01, 2024",
       type: "Renovation",
       comments: 7,
-      introduction:
+      content:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, repudiandae possimus! Quam deserunt perspiciatis sed modi recusandae porro, inventore ducimus maiores natus? Obcaecati amet, fuga ex minus cupiditate facilis aperiam.",
     },
     {
@@ -107,7 +107,7 @@ const FilterTabs = () => {
       date: "JANUARY 01, 2024",
       type: "DIY",
       comments: 8,
-      introduction:
+      content:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, repudiandae possimus! Quam deserunt perspiciatis sed modi recusandae porro, inventore ducimus maiores natus? Obcaecati amet, fuga ex minus cupiditate facilis aperiam.",
     },
     {
@@ -117,7 +117,7 @@ const FilterTabs = () => {
       date: "JANUARY 01, 2024",
       type: "Home Improvement",
       comments: 9,
-      introduction:
+      content:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, repudiandae possimus! Quam deserunt perspiciatis sed modi recusandae porro, inventore ducimus maiores natus? Obcaecati amet, fuga ex minus cupiditate facilis aperiam.",
     },
   ];
@@ -157,7 +157,7 @@ const FilterTabs = () => {
                   {article.title} {article.type}
                 </h2>
                 <p className="text-sm mt-2 line-clamp-1">{article.date}</p>
-                <p className="mt-4 line-clamp-4">{article.introduction}</p>
+                <p className="mt-4 line-clamp-4">{article.content}</p>
                 <div className="flex flex-row justify-between mt-2">
                   <Link
                     to={`/article/${article.id}`}
