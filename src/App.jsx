@@ -17,7 +17,7 @@ function App() {
           <Route path="blogs" element={<Blogs />} />
           <Route path="services" element={<Services />} />
           <Route path="contact" element={<Contact />} />
-          <Route path="article/:id" element={<Article />} />
+          <Route path="blogs/:id" element={<Article />} />
           <Route path="*" element={<NoPage />} />
         </Route>
       </Routes>
