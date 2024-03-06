@@ -1,18 +1,18 @@
 import http from '../constants/httpServices';
-import apiUrl from '../constants/apiUrl';
+
 
 export function getArticles() {
-    return http.get(`${apiUrl}/articles/`);
+    return http.get(`articles/`);
 }
 
 export function getArticle(id) {
-    return http.get(`${apiUrl}/articles/${id}/`);
+    return http.get(`articles/${id}/`);
 }
 
 export function getArticleComments(id) {
-    return http.get(`${apiUrl}/articles/${id}/comments/`);
+    return http.get(`articles/${id}/comments/`);
 }
 
 export function postArticleComment(comment) {
-    return http.post(`${apiUrl}/create_comment/`, comment);
+    return http.post(`create_comment/`, comment);
 }

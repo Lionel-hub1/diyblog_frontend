@@ -1,7 +1,4 @@
 import { useState, useEffect } from "react";
-// import image1 from "../assets/images/fire-making.jpg";
-// import image2 from "../assets/images/lamp.jpg";
-// import image3 from "../assets/images/carpentry.jpg";
 import { Link } from "react-router-dom";
 import { getArticles } from "../data/projectData";
 import apiUrl from "../constants/apiUrl";
@@ -140,7 +137,7 @@ const FilterTabs = () => {
   );
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col w-full">
       <div className="ml-24 mr-10 border-b-[2px] text-[#454545] mt-16 space-x-10 font-semibold">
         {tabs.map((tab) => (
           <button
@@ -157,30 +154,34 @@ const FilterTabs = () => {
         ))}
       </div>
       <div className="px-24 py-10">
-        {filteredArticles.map((article, index) => (
-          <div key={index} className="flex max-h-[15rem] shadow-md mb-8">
-            <img
-              className="min-w-[15rem] max-w-[15rem] h-[15rem] object-cover"
-              src={`${apiUrl}${article.image}`}
-              alt=""
-            />
-            <div className="flex flex-col p-4">
-              <h2 className="text-2xl font-bold line-clamp-1">
-                {article.title} {article.type}
-              </h2>
-              <p className="text-sm mt-2 line-clamp-1">{article.date}</p>
-              <p className="mt-4 line-clamp-4">{article.content}</p>
-              <div className="flex flex-row justify-between mt-2">
-                <Link
-                  to={`/blogs/${article.id}`}
-                  className="text-[#FFA559] font-semibold"
-                >
-                  Read More
-                </Link>
+        {filteredArticles[0] ? (
+          filteredArticles.map((article, index) => (
+            <div key={index} className="flex max-h-[15rem] shadow-md mb-8">
+              <img
+                className="min-w-[15rem] max-w-[15rem] h-[15rem] object-cover"
+                src={`${apiUrl}${article.image}`}
+                alt=""
+              />
+              <div className="flex flex-col p-4">
+                <h2 className="text-2xl font-bold line-clamp-1">
+                  {article.title} {article.type}
+                </h2>
+                <p className="text-sm mt-2 line-clamp-1">{article.date}</p>
+                <p className="mt-4 line-clamp-4">{article.content}</p>
+                <div className="flex flex-row justify-between mt-2">
+                  <Link
+                    to={`/blogs/${article.id}`}
+                    className="text-[#FFA559] font-semibold"
+                  >
+                    Read More
+                  </Link>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))
+        ) : (
+          <div className="text-center">No articles found</div>
+        )}
       </div>
     </div>
   );

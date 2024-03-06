@@ -33,9 +33,17 @@ const Home = () => {
 
   useEffect(() => {
     const fetchArticle = async () => {
-      const { data } = await getArticles();
-      setArticles(data.slice(0, 3));
-      console.log(data);
+      try {
+        const { data } = await getArticles();
+        if (data) {
+          setArticles(data.slice(0, 3));
+          console.log(data);
+        } else {
+          console.log("No data Found");
+        }
+      } catch (error) {
+        console.log(error);
+      }
     };
 
     fetchArticle();
