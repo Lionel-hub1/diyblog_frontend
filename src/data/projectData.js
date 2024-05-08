@@ -1,6 +1,14 @@
 import http from '../constants/httpServices';
 
 
+export function login(user) {
+    return http.post('auth/jwt/create/', user);
+}
+
+export function register(user) {
+    return http.post('auth/users/', user);
+}
+
 export function getArticles() {
     return http.get(`articles/`);
 }
