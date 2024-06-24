@@ -7,6 +7,7 @@ import Contact from "./pages/Contact";
 import NoPage from "./pages/404";
 import Services from "./pages/Services";
 import Article from "./pages/Article";
+import Authenticate from "./auth/Authenticate";
 
 function App() {
   return (
@@ -20,6 +21,8 @@ function App() {
           <Route path="blogs/:id" element={<Article />} />
           <Route path="*" element={<NoPage />} />
         </Route>
+        <Route path="auth" element={<Authenticate />} />
+        <Route path="*" element={<NoPage />} />
       </Routes>
     </BrowserRouter>
   );

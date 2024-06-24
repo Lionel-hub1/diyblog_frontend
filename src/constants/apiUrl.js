@@ -1,3 +1,3 @@
-let apiUrl = "http://127.0.0.1:9000/";
+let apiUrl = "https://lionelsage.pythonanywhere.com/";
 
 export default apiUrl;
