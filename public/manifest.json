@@ -1,0 +1,8 @@
+{
+  "name": "DIY Blog",
+  "short_name": "DIY Blog",
+  "start_url": ".",
+  "display": "standalone",
+  "description": "A blog for DIY enthusiasts",
+  "theme_color": "#000000"
+}
