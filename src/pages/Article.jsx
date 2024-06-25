@@ -44,7 +44,7 @@ const Article = () => {
 
   return (
     <div>
-      {article.author ? (
+      {article && article.author ? (
         <>
           <div className="px-24 py-10">
             <img
@@ -94,9 +94,9 @@ const Article = () => {
             </div>
             <div className="w-full md:w-1/2  md:px-4">
               <h1 className="text-3xl font-bold sticky top-0 bg-white">
-                Comments ({comments.length})
+                Comments ({comments && comments.length})
               </h1>
-              {comments.length !== 0 ? (
+              {comments && comments.length !== 0 ? (
                 comments.map((comment, index) => (
                   <div key={index} className="mt-5">
                     <h2 className="text-xl font-semibold underline">
