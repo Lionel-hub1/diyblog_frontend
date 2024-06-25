@@ -13,6 +13,10 @@ const Layout = () => {
 
   const activeness = "border-b-2 border-[#FFA559]";
 
+  const getCurrentYear = () => {
+    return new Date().getFullYear();
+  };
+
   return (
     <>
       <header className="text-gray-600 body-font bg-[#454545] sticky top-0 z-10">
@@ -30,21 +34,33 @@ const Layout = () => {
                 <Link
                   key={index}
                   to={path.path}
-                  className={`${
-                    location.pathname === path.path ? activeness : ""
-                  } hover:text-[#FFA559] transition duration-300 ease-in-out`}
+                  className={`${location.pathname === path.path ? activeness : ""
+                    } hover:text-[#FFA559] transition duration-300 ease-in-out`}
                 >
                   {path.name}
                 </Link>
               );
             })}
           </nav>
-          <button className="items-center bg-[#FFE6C7] border-0 font-semibold py-1 px-3 ml-10 focus:outline-none hover:bg-[#FFA559] hover:text-[#FFE6C7] rounded mt-4 md:mt-0">
-            Login
-          </button>
+          <a href="mailto:your-email@example.com" className="items-center bg-[#FFE6C7] border-0 font-semibold py-1 px-3 ml-10 focus:outline-none hover:bg-[#FFA559] hover:text-[#FFE6C7] rounded mt-4 md:mt-0">
+            Email Me
+          </a>
         </div>
       </header>
       <Outlet />
+      <footer className="text-gray-600 body-font bg-[#454545]">
+        <div className="container mx-auto py-4 px-14 flex flex-wrap flex-col">
+          <p className="text-[#FFE6C7] text-sm text-center">
+            © {getCurrentYear()} DIY Blog —
+            <Link
+              className="text-[#FFA559] ml-1"
+              to="/contact"
+            >
+              @contact_me
+            </Link>
+          </p>
+        </div>
+      </footer>
     </>
   );
 };
