@@ -42,9 +42,9 @@ const Layout = () => {
               );
             })}
           </nav>
-          <a href="mailto:your-email@example.com" className="items-center bg-[#FFE6C7] border-0 font-semibold py-1 px-3 ml-10 focus:outline-none hover:bg-[#FFA559] hover:text-[#FFE6C7] rounded mt-4 md:mt-0">
-            Email Me
-          </a>
+          <button className="items-center bg-[#FFE6C7] border-0 font-semibold py-1 px-3 ml-10 focus:outline-none hover:bg-[#FFA559] hover:text-[#FFE6C7] rounded mt-4 md:mt-0">
+            Login
+          </button>
         </div>
       </header>
       <Outlet />
@@ -52,12 +52,14 @@ const Layout = () => {
         <div className="container mx-auto py-4 px-14 flex flex-wrap flex-col">
           <p className="text-[#FFE6C7] text-sm text-center">
             © {getCurrentYear()} DIY Blog —
-            <Link
+            <a
+              href="mailto:ndabagajeanlionel@gmail.com"
               className="text-[#FFA559] ml-1"
-              to="/contact"
+              rel="noopener noreferrer"
+              target="_blank"
             >
-              @contact_me
-            </Link>
+              @lionel
+            </a>
           </p>
         </div>
       </footer>
