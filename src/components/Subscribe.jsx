@@ -24,7 +24,7 @@ const Subscribe = () => {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
-        <button className="bg-[#FF6000] text-white p-2">Subscribe</button>
+        <button className="bg-[#FFA559] text-white p-2">Subscribe</button>
       </form>
     </div>
   );

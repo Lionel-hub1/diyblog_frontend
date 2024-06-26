@@ -121,7 +121,7 @@ const Article = () => {
           </div>
         </>
       ) : (
-        <p className="mt-16 text-center text-[#FF6000]">Loading...</p>
+          <p className="mt-16 h-[100vh] text-center flex justify-center space-x-5 text-[#FF6000]"><div className="w-6 h-6 border-2 border-[#FF6000] rounded-full animate-spin border-t-transparent"></div> <span>Loading...</span></p>
       )}
     </div>
   );

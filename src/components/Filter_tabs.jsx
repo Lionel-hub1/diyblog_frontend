@@ -163,11 +163,11 @@ const FilterTabs = () => {
                 alt=""
               />
               <div className="flex flex-col p-4">
-                <h2 className="text-2xl font-bold line-clamp-1">
+                <h2 className="text-2xl text-[#454545] font-bold line-clamp-1">
                   {article.title} {article.type}
                 </h2>
                 <p className="text-sm mt-2 line-clamp-1">{article.date}</p>
-                <p className="mt-4 line-clamp-4">{article.content}</p>
+                <p className="mt-4 line-clamp-4 text-gray-600">{article.content}</p>
                 <div className="flex flex-row justify-between mt-2">
                   <Link
                     to={`/blogs/${article.id}`}

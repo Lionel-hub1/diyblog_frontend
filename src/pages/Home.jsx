@@ -7,29 +7,6 @@ import apiUrl from "../constants/apiUrl";
 
 const Home = () => {
   const [articles, setArticles] = useState([]);
-  // const articles = [
-  //   {
-  //     id: 1,
-  //     image: image1,
-  //     title: "Article Title",
-  //     date: "JANUARY 01, 2024",
-  //     comments: 5,
-  //   },
-  //   {
-  //     id: 2,
-  //     image: image2,
-  //     title: "Article Title",
-  //     date: "JANUARY 01, 2024",
-  //     comments: 0,
-  //   },
-  //   {
-  //     id: 3,
-  //     image: image3,
-  //     title: "Article Title",
-  //     date: "JANUARY 01, 2024",
-  //     comments: 3,
-  //   },
-  // ];
 
   useEffect(() => {
     const fetchArticle = async () => {
@@ -48,6 +25,14 @@ const Home = () => {
 
     fetchArticle();
   }, []);
+
+  const formatDate = (date) => {
+    return new Date(date).toLocaleDateString("en-US", {
+      month: "long",
+      day: "numeric",
+      year: "numeric",
+    });
+  }
 
   return (
     <>
@@ -71,7 +56,7 @@ const Home = () => {
             <div className="absolute bottom-0 left-0 p-4 text-[#FFE6C7]">
               <h2 className="text-3xl font-bold">{article.title}</h2>
               <p className="text-sm">
-                {article.date} | JEAN LIONEL | {article.comments.length}{" "}
+                {formatDate(article.created_at)} | JEAN LIONEL | {article.comments.length}{" "}
                 {article.comments.length === 1 ? "COMMENT" : "COMMENTS"}
               </p>
               {article.comments.length === 0 && (
