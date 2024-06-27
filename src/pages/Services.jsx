@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const Services = () => {
     return (
-        <div className="h-[100vh] text-center flex flex-col items-center justify-center">
+        <div className="h-[100vh] bg-gray-100 text-center flex flex-col items-center justify-center">
             <h1 className="text-4xl font-bold mb-4">
                 Oops! This page is still under construction.
             </h1>
