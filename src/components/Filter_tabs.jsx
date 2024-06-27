@@ -15,7 +15,6 @@ const FilterTabs = () => {
     const fetchArticle = async () => {
       const { data } = await getArticles();
       setArticles(data.slice(0, 3));
-      console.log(data);
     };
 
     fetchArticle();
