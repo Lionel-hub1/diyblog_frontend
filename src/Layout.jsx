@@ -42,9 +42,6 @@ const Layout = () => {
               );
             })}
           </nav>
-          <button className="items-center bg-[#FFE6C7] border-0 font-semibold py-1 px-3 ml-10 focus:outline-none hover:bg-[#FFA559] hover:text-[#FFE6C7] rounded mt-4 md:mt-0">
-            Login
-          </button>
         </div>
       </header>
       <Outlet />
