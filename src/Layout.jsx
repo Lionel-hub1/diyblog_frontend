@@ -1,5 +1,6 @@
 import { Outlet, Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
+import FooterLion from "./components/FooterLion";
 
 const Layout = () => {
   const location = useLocation();
@@ -12,10 +13,6 @@ const Layout = () => {
   ];
 
   const activeness = "border-b-2 border-[#FFA559]";
-
-  const getCurrentYear = () => {
-    return new Date().getFullYear();
-  };
 
   return (
     <>
@@ -45,21 +42,7 @@ const Layout = () => {
         </div>
       </header>
       <Outlet />
-      <footer className="text-gray-600 body-font bg-[#454545]">
-        <div className="container mx-auto py-4 px-14 flex flex-wrap flex-col">
-          <p className="text-[#FFE6C7] text-sm text-center">
-            © {getCurrentYear()} DIY Blog —
-            <a
-              href="mailto:ndabagajeanlionel@gmail.com"
-              className="text-[#FFA559] ml-1"
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              @lionel
-            </a>
-          </p>
-        </div>
-      </footer>
+      <FooterLion />
     </>
   );
 };
