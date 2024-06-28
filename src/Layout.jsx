@@ -20,7 +20,7 @@ const Layout = () => {
   return (
     <>
       <header className="text-gray-600 body-font bg-[#454545] sticky top-0 z-10">
-        <div className="container mx-auto flex flex-wrap py-5 px-14 flex-col md:flex-row items-center">
+        <div className="container mx-auto flex flex-wrap py-5 px-4 md:px-14 flex-col md:flex-row items-center">
           <Link
             to="/"
             className="flex title-font font-medium items-center mb-4 md:mb-0"

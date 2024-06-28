@@ -35,7 +35,7 @@ const Home = () => {
 
   return (
     <>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-1 px-24 py-1 bg-[#454545] shadow-md">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-1 px-4 sm:px-14 lg:px-24 py-1 bg-[#454545] shadow-md">
         {articles.map((article, index) => (
           <Link
             key={index}

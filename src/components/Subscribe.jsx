@@ -8,7 +8,7 @@ const Subscribe = () => {
     setEmail("");
   };
   return (
-    <div className="flex flex-col ml-24 xl:ml-0 mr-24 mb-16 xl:max-w-[20rem] xl:mt-16 ">
+    <div className="flex flex-col mx-4 sm:mx-14 lg:mx-24 xl:ml-0 mb-16 xl:max-w-[20rem] xl:mt-16 ">
       <div className="uppercase mb-10 border-b-[2px] text-[#454545] font-semibold">
         SUbscribe to our newsletter
       </div>
