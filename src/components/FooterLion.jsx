@@ -4,7 +4,7 @@ const FooterLion = () => {
     };
 
     return (
-        <footer className="text-gray-600 body-font bg-[#454545]">
+        <footer className="text-gray-600 body-font bg-[#454545] mt-5">
             <div className="container mx-auto py-4 px-14 flex flex-wrap flex-col">
                 <p className="text-[#FFE6C7] text-sm text-center">
                     © {getCurrentYear()} DIY Blog —
