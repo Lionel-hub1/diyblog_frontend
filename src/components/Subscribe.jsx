@@ -20,7 +20,7 @@ const Subscribe = () => {
         <input
           type="email"
           placeholder="Enter your email"
-          className="border-2 p-2 focus:outline-none"
+          className="border-2 p-2 focus:outline-none w-full"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
