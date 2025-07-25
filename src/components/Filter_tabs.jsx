@@ -28,109 +28,6 @@ const FilterTabs = () => {
     { id: 5, name: "Renovation" },
   ];
 
-  // const articlesList = [
-  //   {
-  //     id: 1,
-  //     image: image1,
-  //     title: "Article Title",
-  //     date: "JANUARY 01, 2024",
-  //     type: "DIY",
-  //     comments: 5,
-  //     content:
-  //       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, repudiandae possimus! Quam deserunt perspiciatis sed modi recusandae porro, inventore ducimus maiores natus? Obcaecati amet, fuga ex minus cupiditate facilis aperiam.",
-  //   },
-  //   {
-  //     id: 2,
-  //     image: image2,
-  //     title: "Article Title",
-  //     date: "JANUARY 01, 2024",
-  //     type: "Home Improvement",
-  //     comments: 0,
-  //     content:
-  //       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, repudiandae possimus! Quam deserunt perspiciatis sed modi recusandae porro, inventore ducimus maiores natus? Obcaecati amet, fuga ex minus cupiditate facilis aperiam.",
-  //   },
-  //   {
-  //     id: 3,
-  //     image: image3,
-  //     title: "Article Title",
-  //     date: "JANUARY 01, 2024",
-  //     type: "Decor",
-  //     comments: 3,
-  //     content:
-  //       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, repudiandae possimus! Quam deserunt perspiciatis sed modi recusandae porro, inventore ducimus maiores natus? Obcaecati amet, fuga ex minus cupiditate facilis aperiam.",
-  //   },
-  //   {
-  //     id: 4,
-  //     image: image1,
-  //     title: "Article Title",
-  //     date: "JANUARY 01, 2024",
-  //     type: "Renovation",
-  //     comments: 2,
-  //     content:
-  //       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, repudiandae possimus! Quam deserunt perspiciatis sed modi recusandae porro, inventore ducimus maiores natus? Obcaecati amet, fuga ex minus cupiditate facilis aperiam.",
-  //   },
-  //   {
-  //     id: 5,
-  //     image: image2,
-  //     title: "Article Title",
-  //     date: "JANUARY 01, 2024",
-  //     type: "DIY",
-  //     comments: 1,
-  //     content:
-  //       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, repudiandae possimus! Quam deserunt perspiciatis sed modi recusandae porro, inventore ducimus maiores natus? Obcaecati amet, fuga ex minus cupiditate facilis aperiam.",
-  //   },
-  //   {
-  //     id: 6,
-  //     image: image3,
-  //     title: "Article Title",
-  //     date: "JANUARY 01, 2024",
-  //     type: "Home Improvement",
-  //     comments: 4,
-  //     content:
-  //       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, repudiandae possimus! Quam deserunt perspiciatis sed modi recusandae porro, inventore ducimus maiores natus? Obcaecati amet, fuga ex minus cupiditate facilis aperiam.",
-  //   },
-  //   {
-  //     id: 7,
-  //     image: image1,
-  //     title: "Article Title",
-  //     date: "JANUARY 01, 2024",
-  //     type: "Decor",
-  //     comments: 6,
-  //     content:
-  //       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, repudiandae possimus! Quam deserunt perspiciatis sed modi recusandae porro, inventore ducimus maiores natus? Obcaecati amet, fuga ex minus cupiditate facilis aperiam.",
-  //   },
-  //   {
-  //     id: 8,
-  //     image: image2,
-  //     title: "Article Title",
-  //     date: "JANUARY 01, 2024",
-  //     type: "Renovation",
-  //     comments: 7,
-  //     content:
-  //       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, repudiandae possimus! Quam deserunt perspiciatis sed modi recusandae porro, inventore ducimus maiores natus? Obcaecati amet, fuga ex minus cupiditate facilis aperiam.",
-  //   },
-  //   {
-  //     id: 9,
-  //     image: image3,
-  //     title: "Article Title",
-  //     date: "JANUARY 01, 2024",
-  //     type: "DIY",
-  //     comments: 8,
-  //     content:
-  //       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, repudiandae possimus! Quam deserunt perspiciatis sed modi recusandae porro, inventore ducimus maiores natus? Obcaecati amet, fuga ex minus cupiditate facilis aperiam.",
-  //   },
-  //   {
-  //     id: 10,
-  //     image: image1,
-  //     title: "Article Title",
-  //     date: "JANUARY 01, 2024",
-  //     type: "Home Improvement",
-  //     comments: 9,
-  //     content:
-  //       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, repudiandae possimus! Quam deserunt perspiciatis sed modi recusandae porro, inventore ducimus maiores natus? Obcaecati amet, fuga ex minus cupiditate facilis aperiam.",
-  //   },
-  // ];
-
   const filteredArticles = articles.filter(
     (article) => activeTab === "All" || article.type === activeTab
   );
@@ -151,7 +48,7 @@ const FilterTabs = () => {
           </button>
         ))}
       </div>
-      <div className="px-4 sm:px-14 lg:px-24 py-10">
+      <div className="px-4 py-10 sm:px-14 lg:px-24">
         {filteredArticles[0] ? (
           filteredArticles.map((article, index) => (
             <div key={index} className="flex max-h-[7rem] sm:max-h-[15rem] shadow-md mb-8">
@@ -165,7 +62,7 @@ const FilterTabs = () => {
                   {article.title} {article.type}
                 </h2>
                 <p className="text-xs sm:text-sm sm:mt-2 line-clamp-1">{article.date}</p>
-                <p className="sm:mt-4 line-clamp-2 sm:line-clamp-4 text-gray-600">{article.content}</p>
+                <p className="text-gray-600 sm:mt-4 line-clamp-2 sm:line-clamp-4">{article.content}</p>
                 <div className="flex flex-row justify-between mt-2">
                   <Link
                     to={`/blogs/${article.id}`}
