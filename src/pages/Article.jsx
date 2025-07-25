@@ -6,6 +6,7 @@ import {
   postArticleComment,
 } from "../data/projectData";
 import apiUrl from "../constants/apiUrl";
+import { useLoading } from "../context/LoadingContext";
 
 const Article = () => {
   const { id } = useParams();
@@ -39,19 +40,35 @@ const Article = () => {
     setComment("");
   };
 
+  const { setIsLoading } = useLoading();
+
   useEffect(() => {
     const fetchArticle = async () => {
-      const { data } = await getArticle(id);
-      setArticle(data);
+      setIsLoading(true);
+      try {
+        const { data } = await getArticle(id);
+        setArticle(data);
+      } catch (e) {
+        // handle error
+      } finally {
+        setIsLoading(false);
+      }
     };
     const getComments = async () => {
-      const { data } = await getArticleComments(id);
-      setComments(data);
+      setIsLoading(true);
+      try {
+        const { data } = await getArticleComments(id);
+        setComments(data);
+      } catch (e) {
+        // handle error
+      } finally {
+        setIsLoading(false);
+      }
     };
 
     fetchArticle();
     getComments();
-  }, [id]);
+  }, [id, setIsLoading]);
 
   return (
     <div>

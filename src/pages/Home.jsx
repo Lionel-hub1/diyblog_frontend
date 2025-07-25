@@ -4,12 +4,15 @@ import FilterTabs from "../components/Filter_tabs";
 import Subscribe from "../components/Subscribe";
 import { getArticles } from "../data/projectData";
 import apiUrl from "../constants/apiUrl";
+import { useLoading } from "../context/LoadingContext";
 
 const Home = () => {
   const [articles, setArticles] = useState([]);
+  const { setIsLoading } = useLoading();
 
   useEffect(() => {
     const fetchArticle = async () => {
+      setIsLoading(true);
       try {
         const { data } = await getArticles();
         if (data) {
@@ -19,11 +22,13 @@ const Home = () => {
         }
       } catch (error) {
         console.log(error);
+      } finally {
+        setIsLoading(false);
       }
     };
 
     fetchArticle();
-  }, []);
+  }, [setIsLoading]);
 
   const formatDate = (date) => {
     return new Date(date).toLocaleDateString("en-US", {
@@ -40,14 +45,12 @@ const Home = () => {
           <Link
             key={index}
             to={`/blogs/${article.id}`}
-            className={`relative border-[1px] border-[#FFE6C7] shadow-lg ${
-              index === 0 && "row-span-2 md:-mb-10"
-            } ${index === 2 && "-mb-10"}`}
+            className={`relative border-[1px] border-[#FFE6C7] shadow-lg ${index === 0 && "row-span-2 md:-mb-10"
+              } ${index === 2 && "-mb-10"}`}
           >
             <img
-              className={`${
-                index === 0 ? "h-full" : "h-[15rem]"
-              } w-full object-cover`}
+              className={`${index === 0 ? "h-full" : "h-[15rem]"
+                } w-full object-cover`}
               src={`${apiUrl}${article.image}`}
               alt=""
             />

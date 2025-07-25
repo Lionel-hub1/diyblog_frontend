@@ -17,10 +17,10 @@ const Layout = () => {
   return (
     <>
       <header className="text-gray-600 body-font bg-[#454545] sticky top-0 z-10">
-        <div className="container mx-auto flex flex-wrap py-5 px-4 md:px-14 flex-col md:flex-row items-center">
+        <div className="container flex flex-col flex-wrap items-center px-4 py-5 mx-auto md:px-14 md:flex-row">
           <Link
             to="/"
-            className="flex title-font font-medium items-center mb-4 md:mb-0"
+            className="flex items-center mb-4 font-medium title-font md:mb-0"
           >
             <span className="text-3xl font-black text-[#FFE6C7]">DIY</span>{" "}
             <span className="text-3xl font-semibold text-[#FFA559]">Blog</span>
