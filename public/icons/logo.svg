@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <!-- Background circle -->
+  <circle cx="100" cy="100" r="90" fill="#FFE6C7"/>
+  
+  <!-- House outline -->
+  <path d="M100 40L35 90v70h130V90L100 40z" fill="none" stroke="#454545" stroke-width="8" stroke-linejoin="round"/>
+  
+  <!-- Door -->
+  <path d="M85 160V110h30v50" fill="none" stroke="#454545" stroke-width="6" stroke-linejoin="round"/>
+  
+  <!-- Roof chimney -->
+  <path d="M140 75V40h15v50" fill="none" stroke="#454545" stroke-width="6" stroke-linejoin="round"/>
+  
+  <!-- Hammer -->
+  <g transform="rotate(45, 100, 110)">
+    <rect x="85" y="95" width="10" height="45" fill="#FFA559" rx="2" ry="2"/>
+    <path d="M75 85h30v15H75z" fill="#FFA559"/>
+    <path d="M70 85v15h5V85z" fill="#454545"/>
+  </g>
+  
+  <!-- Paintbrush -->
+  <g transform="rotate(-45, 100, 110)">
+    <rect x="95" y="90" width="10" height="50" fill="#454545" rx="2" ry="2"/>
+    <path d="M90 80h20v15s-5 5-10 5-10-5-10-5V80z" fill="#FFA559"/>
+    <path d="M95 75v5h10v-5l-5-10-5 10z" fill="#FFA559"/>
+  </g>
+  
+  <!-- DIY Text -->
+  <g font-family="Arial, sans-serif" font-weight="bold">
+    <text x="100" y="180" fill="#454545" text-anchor="middle" font-size="18">DIY BLOG</text>
+  </g>
+</svg>
