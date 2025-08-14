@@ -6,6 +6,7 @@ import apiUrl from "../constants/apiUrl";
 const FilterTabs = () => {
   const [activeTab, setActiveTab] = useState("All");
   const [articles, setArticles] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   const handleTabClick = (tab) => {
     setActiveTab(tab);
@@ -13,8 +14,15 @@ const FilterTabs = () => {
 
   useEffect(() => {
     const fetchArticle = async () => {
-      const { data } = await getArticles();
-      setArticles(data.slice(0, 3));
+      setIsLoading(true);
+      try {
+        const { data } = await getArticles();
+        setArticles(data.slice(0, 4));
+      } catch (error) {
+        console.error("Error fetching articles:", error);
+      } finally {
+        setIsLoading(false);
+      }
     };
 
     fetchArticle();
@@ -32,51 +40,161 @@ const FilterTabs = () => {
     (article) => activeTab === "All" || article.type === activeTab
   );
 
+  const formatDate = (date) => {
+    return new Date(date).toLocaleDateString("en-US", {
+      month: "long",
+      day: "numeric",
+      year: "numeric",
+    });
+  };
+
   return (
     <div className="flex flex-col w-full">
-      <div className="mx-4 sm:mx-14 lg:mx-24 xl:mr-10 sm:border-b-[2px] text-[#454545] mt-16 space-x-10 font-semibold">
-        {tabs.map((tab) => (
-          <button
-            key={tab.id}
-            onClick={() => handleTabClick(tab.name)}
-            className={`${activeTab === tab.name
-              ? "bg-[#FFA559] px-3 py-1 rounded-full sm:bg-transparent sm:px-0 sm:py-0 sm:rounded-none text-white sm:border-[#FFA559] sm:text-[#FFA559] transition duration-300 ease-in-out"
-              : "sm:border-transparent"
-              } sm:border-b-[2px] -mb-1 focus:outline-none uppercase`}
-          >
-            {tab.name}
-          </button>
-        ))}
+      <div className="mx-4 mt-16 sm:mx-14 lg:mx-24 xl:mr-10">
+        <h2 className="text-2xl font-bold text-[#454545] mb-6">
+          Explore Articles
+        </h2>
+
+        <div className="flex flex-wrap gap-3 mb-6">
+          {tabs.map((tab) => (
+            <button
+              key={tab.id}
+              onClick={() => handleTabClick(tab.name)}
+              className={`${activeTab === tab.name
+                  ? "bg-[#FFA559] text-white shadow-md"
+                  : "bg-gray-100 text-[#454545] hover:bg-gray-200"
+                } px-4 py-2 rounded-full text-sm font-medium transition-all duration-300`}
+            >
+              {tab.name}
+            </button>
+          ))}
+        </div>
       </div>
-      <div className="px-4 py-10 sm:px-14 lg:px-24">
-        {filteredArticles[0] ? (
-          filteredArticles.map((article, index) => (
-            <div key={index} className="flex max-h-[7rem] sm:max-h-[15rem] shadow-md mb-8">
-              <img
-                className="min-w-[7rem] max-w-[7rem] h-[7rem] sm:min-w-[15rem] sm:max-w-[15rem] sm:h-[15rem] object-cover"
-                src={`${apiUrl}${article.image}`}
-                alt=""
-              />
-              <div className="flex flex-col px-2 sm:p-4">
-                <h2 className="text-md sm:text-2xl text-[#454545] font-bold line-clamp-1">
-                  {article.title} {article.type}
-                </h2>
-                <p className="text-xs sm:text-sm sm:mt-2 line-clamp-1">{article.date}</p>
-                <p className="text-gray-600 sm:mt-4 line-clamp-2 sm:line-clamp-4">{article.content}</p>
-                <div className="flex flex-row justify-between mt-2">
-                  <Link
-                    to={`/blogs/${article.id}`}
-                    className="text-[#FFA559] font-semibold"
-                  >
-                    Read More
-                  </Link>
+
+      <div className="px-4 py-6 sm:px-14 lg:px-24">
+        {isLoading ? (
+          <div className="flex justify-center py-12">
+            <div className="w-10 h-10 border-4 border-[#FFA559] border-t-transparent rounded-full animate-spin"></div>
+          </div>
+        ) : filteredArticles.length > 0 ? (
+          <div className="grid grid-cols-1 gap-6">
+            {filteredArticles.map((article, index) => (
+              <Link
+                key={index}
+                to={`/blogs/${article.id}`}
+                className="flex flex-col overflow-hidden transition-shadow duration-300 bg-white rounded-lg shadow-md sm:flex-row hover:shadow-lg"
+              >
+                <div className="overflow-hidden sm:w-1/3">
+                  <img
+                    className="object-cover w-full h-48 transition-transform duration-500 transform sm:h-full hover:scale-105"
+                    src={`${apiUrl}${article.image}`}
+                    alt={article.title}
+                  />
                 </div>
-              </div>
-            </div>
-          ))
+                <div className="flex flex-col p-4 sm:p-6 sm:w-2/3">
+                  <div className="flex-grow">
+                    <div className="flex items-center mb-2 space-x-2">
+                      <span className="text-xs text-gray-500">
+                        {formatDate(article.created_at)}
+                      </span>
+                      <span className="text-xs text-gray-400">•</span>
+                      <span className="text-xs bg-[#FFA559]/10 text-[#FFA559] px-2 py-1 rounded-full">
+                        {article.type || "DIY"}
+                      </span>
+                    </div>
+
+                    <h2 className="text-xl sm:text-2xl font-bold text-[#454545] mb-2 hover:text-[#FFA559] transition-colors duration-200">
+                      {article.title}
+                    </h2>
+
+                    <p className="mb-4 text-gray-600 line-clamp-3">
+                      {article.content}
+                    </p>
+                  </div>
+
+                  <div className="flex items-center justify-between pt-4 mt-4 border-t border-gray-100">
+                    <Link
+                      to={`/blogs/${article.id}`}
+                      className="inline-flex items-center font-medium text-[#FFA559] hover:text-[#ff9233]"
+                    >
+                      Read More
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="w-4 h-4 ml-2"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M14 5l7 7m0 0l-7 7m7-7H3"
+                        />
+                      </svg>
+                    </Link>
+
+                    <div className="flex items-center text-sm text-gray-500">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="w-4 h-4 mr-1"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"
+                        />
+                      </svg>
+                      <span>
+                        {article.comments.length}{" "}
+                        {article.comments.length === 1 ? "comment" : "comments"}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
         ) : (
-          <div className="text-center">No articles found</div>
+          <div className="py-10 text-center">
+            <p className="text-lg text-gray-500">
+              No articles found in this category
+            </p>
+            <button
+              onClick={() => setActiveTab("All")}
+              className="mt-4 text-[#FFA559] font-medium hover:underline"
+            >
+              View all articles instead
+            </button>
+          </div>
         )}
+
+        <div className="mt-8 text-center">
+          <Link
+            to="/blogs"
+            className="inline-flex items-center px-6 py-3 bg-[#454545] text-white font-bold rounded-md hover:bg-[#353535] transition-all duration-300"
+          >
+            View All Articles
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="w-5 h-5 ml-2"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M17 8l4 4m0 0l-4 4m4-4H3"
+              />
+            </svg>
+          </Link>
+        </div>
       </div>
     </div>
   );
