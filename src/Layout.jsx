@@ -17,7 +17,7 @@ const Layout = () => {
 
   return (
     <>
-      <header className="text-gray-600 body-font bg-[#454545] sticky top-0 z-10">
+      <header className="text-gray-600 body-font bg-[#454545] sticky top-0 z-30">
         <div className="container flex flex-col flex-wrap items-center px-4 py-5 mx-auto md:px-14 md:flex-row">
           <Link
             to="/"
