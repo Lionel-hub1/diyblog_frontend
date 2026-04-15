@@ -9,6 +9,7 @@ import Services from "./pages/Services";
 import Article from "./pages/Article";
 import Authenticate from "./auth/Authenticate";
 import Offline from "./pages/Offline";
+import Admin from "./pages/Admin";
 import { LoadingProvider, useLoading } from "./context/LoadingContext";
 import LoadingScreen from "./components/LoadingScreen";
 
@@ -50,6 +51,7 @@ function AppWithLoading() {
             <Route path="*" element={<NoPage />} />
           </Route>
           <Route path="auth" element={<Authenticate />} />
+          <Route path="admin" element={<Admin />} />
           <Route path="offline" element={<Offline />} />
           <Route path="*" element={<NoPage />} />
         </Routes>

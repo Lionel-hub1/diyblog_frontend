@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { getArticles } from "../data/projectData";
 import apiUrl from "../constants/apiUrl";
+import { stripRichText } from "../utils/richText";
 
 const FilterTabs = () => {
   const [activeTab, setActiveTab] = useState("All");
@@ -108,7 +109,7 @@ const FilterTabs = () => {
                     </h2>
 
                     <p className="mb-4 text-gray-600 line-clamp-3">
-                      {article.content}
+                      {stripRichText(article.content, 180)}
                     </p>
                   </div>
 
@@ -150,8 +151,8 @@ const FilterTabs = () => {
                         />
                       </svg>
                       <span>
-                        {article.comments.length}{" "}
-                        {article.comments.length === 1 ? "comment" : "comments"}
+                        {article.comments?.length || 0}{" "}
+                        {(article.comments?.length || 0) === 1 ? "comment" : "comments"}
                       </span>
                     </div>
                   </div>

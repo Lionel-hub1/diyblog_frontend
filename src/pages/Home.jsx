@@ -100,11 +100,11 @@ const Home = () => {
                       </span>
                       <span className="hidden sm:inline">•</span>
                       <span className="bg-[#454545]/50 px-2 py-1 rounded-full">
-                        {article.comments.length}{" "}
-                        {article.comments.length === 1 ? "Comment" : "Comments"}
+                        {article.comments?.length || 0}{" "}
+                        {(article.comments?.length || 0) === 1 ? "Comment" : "Comments"}
                       </span>
                     </div>
-                    {article.comments.length === 0 && (
+                    {(article.comments?.length || 0) === 0 && (
                       <p className="text-[0.70rem] sm:text-xs text-[#FFA559] mt-1 drop-shadow-[0_1px_4px_rgba(0,0,0,0.6)]">
                         Be the first to comment
                       </p>

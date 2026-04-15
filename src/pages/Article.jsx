@@ -2,17 +2,20 @@ import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import {
   getArticle,
+  getArticles,
   getArticleComments,
   postArticleComment,
 } from "../data/projectData";
 import apiUrl from "../constants/apiUrl";
 import { useLoading } from "../context/LoadingContext";
+import { toDisplayHtml } from "../utils/richText";
 
 const Article = () => {
   const { id } = useParams();
   const [article, setArticle] = useState({});
   const [comments, setComments] = useState([]);
   const [relatedArticles, setRelatedArticles] = useState([]);
+  const [articleError, setArticleError] = useState(false);
 
   const [name, setName] = useState("");
   const [comment, setComment] = useState("");
@@ -34,7 +37,7 @@ const Article = () => {
     </div>
     `;
     document.body.appendChild(modal);
-  }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -48,7 +51,7 @@ const Article = () => {
         content: comment,
       };
       const { data } = await postArticleComment(newComment);
-      setComments([...comments, data]);
+      setComments((prevComments) => [...prevComments, data]);
       setName("");
       setComment("");
       setCommentSuccess(true);
@@ -71,6 +74,7 @@ const Article = () => {
   useEffect(() => {
     const fetchArticleData = async () => {
       setIsLoading(true);
+      setArticleError(false);
       try {
         const { data } = await getArticle(id);
         setArticle(data);
@@ -80,13 +84,21 @@ const Article = () => {
         const commentsResponse = await getArticleComments(id);
         setComments(commentsResponse.data);
 
-        // Simulated related articles (in a real app, you'd fetch related content)
-        setRelatedArticles([
-          { id: Math.floor(Math.random() * 100), title: "10 Weekend DIY Projects Anyone Can Do", image: data.image },
-          { id: Math.floor(Math.random() * 100), title: "Essential Tools Every DIY Enthusiast Should Own", image: data.image },
-        ]);
+        const relatedResponse = await getArticles();
+        const allArticles = relatedResponse.data || [];
+        const sameTypeArticles = allArticles
+          .filter((entry) => entry.id !== data.id)
+          .filter((entry) => !data.type || entry.type === data.type)
+          .slice(0, 3);
+
+        if (sameTypeArticles.length > 0) {
+          setRelatedArticles(sameTypeArticles);
+        } else {
+          setRelatedArticles(allArticles.filter((entry) => entry.id !== data.id).slice(0, 3));
+        }
       } catch (error) {
         console.error("Error fetching article:", error);
+        setArticleError(true);
       } finally {
         setIsLoading(false);
       }
@@ -96,6 +108,25 @@ const Article = () => {
     // Scroll to top when article changes
     window.scrollTo(0, 0);
   }, [id, setIsLoading]);
+
+  if (articleError) {
+    return (
+      <div className="min-h-screen flex items-center justify-center px-4">
+        <div className="text-center max-w-lg">
+          <h1 className="text-3xl font-bold text-[#454545]">Article not available</h1>
+          <p className="mt-3 text-gray-600">
+            This article could not be loaded right now. Please try again in a moment.
+          </p>
+          <Link
+            to="/blogs"
+            className="inline-block mt-6 px-5 py-2 rounded-md bg-[#FFA559] text-white font-semibold hover:bg-[#ff9233] transition-colors"
+          >
+            Back to Blogs
+          </Link>
+        </div>
+      </div>
+    );
+  }
 
   if (!article || !article.author) {
     return (
@@ -164,12 +195,17 @@ const Article = () => {
                 </button>
               </div>
 
-              <div className="prose max-w-none">
-                <p className="text-lg leading-relaxed whitespace-pre-line">{article.content}</p>
-              </div>
+              <div
+                className="article-rich-content prose prose-lg max-w-none prose-headings:text-[#454545] prose-a:text-[#FFA559]"
+                dangerouslySetInnerHTML={{ __html: toDisplayHtml(article.content || "") }}
+              />
 
               <div className="mt-8 pt-6 border-t border-gray-200">
-                <h2 className="text-2xl font-bold text-[#454545] mb-6">Leave a Comment</h2>
+                <h2 className="text-2xl font-bold text-[#454545] mb-2">Leave a Comment</h2>
+                <p className="text-gray-500 mb-6 text-sm">
+                  Share your thoughts, questions, or additional tips for this project.
+                </p>
+
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">Name</label>

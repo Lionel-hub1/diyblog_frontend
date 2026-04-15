@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { getArticles } from "../data/projectData";
 import apiUrl from "../constants/apiUrl";
 import { useLoading } from "../context/LoadingContext";
+import { stripRichText } from "../utils/richText";
 
 const Blogs = () => {
   const [articles, setArticles] = useState([]);
@@ -104,7 +105,7 @@ const Blogs = () => {
                     {formatDate(article.created_at)}
                   </p>
                   <p className="mb-4 text-gray-600 line-clamp-3">
-                    {article.content}
+                    {stripRichText(article.content, 180)}
                   </p>
                   <div className="flex items-center justify-between">
                     <span className="text-[#FFA559] font-medium text-sm inline-flex items-center">
@@ -125,8 +126,8 @@ const Blogs = () => {
                       </svg>
                     </span>
                     <span className="text-sm text-gray-500">
-                      {article.comments.length}{" "}
-                      {article.comments.length === 1 ? "comment" : "comments"}
+                      {article.comments?.length || 0}{" "}
+                      {(article.comments?.length || 0) === 1 ? "comment" : "comments"}
                     </span>
                   </div>
                 </div>
