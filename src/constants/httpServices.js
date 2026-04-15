@@ -9,5 +9,6 @@ export default {
     get: basicConf.get,
     post: basicConf.post,
     put: basicConf.put,
+    patch: basicConf.patch,
     delete: basicConf.delete,
 }
