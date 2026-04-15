@@ -32,12 +32,28 @@ export function createArticle(articleData, token) {
     return http.post('articles/', articleData, authConfig(token));
 }
 
+export function updateArticle(id, articleData, token) {
+    return http.patch(`articles/${id}/`, articleData, authConfig(token));
+}
+
+export function deleteArticle(id, token) {
+    return http.delete(`articles/${id}/`, authConfig(token));
+}
+
 export function getTypes() {
     return http.get('types/');
 }
 
 export function createType(typePayload, token) {
     return http.post('types/', typePayload, authConfig(token));
+}
+
+export function updateType(id, typePayload, token) {
+    return http.patch(`types/${id}/`, typePayload, authConfig(token));
+}
+
+export function deleteType(id, token) {
+    return http.delete(`types/${id}/`, authConfig(token));
 }
 
 export function getCurrentUser(token) {
@@ -57,4 +73,8 @@ export function getArticleComments(id) {
 
 export function postArticleComment(comment) {
     return http.post(`create_comment/`, comment);
+}
+
+export function deleteComment(id, token) {
+    return http.delete(`comments/${id}/`, authConfig(token));
 }
