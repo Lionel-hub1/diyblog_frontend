@@ -4,50 +4,50 @@
 
 /* scroll bar customs */
 ::-webkit-scrollbar {
-  width: 10px;
-  border-radius: 10px;
+	width: 10px;
+	border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #FFA559;
-  border-radius: 10px;
+	background: #ffa559;
+	border-radius: 10px;
 }
 
 .admin-quill-wrapper .ql-container {
-  min-height: 320px;
-  font-size: 1rem;
+	min-height: 320px;
+	font-size: 1rem;
 }
 
 .admin-quill-wrapper .ql-editor {
-  min-height: 280px;
-  line-height: 1.7;
+	min-height: 280px;
+	line-height: 1.7;
 }
 
 .article-rich-content img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 0.5rem;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+	max-width: 100%;
+	height: auto;
+	border-radius: 0.5rem;
+	margin-top: 1rem;
+	margin-bottom: 1rem;
 }
 
 .article-rich-content blockquote {
-  border-left: 4px solid #ffa559;
-  padding-left: 1rem;
-  color: #4b5563;
-  font-style: italic;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+	border-left: 4px solid #ffa559;
+	padding-left: 1rem;
+	color: #4b5563;
+	font-style: italic;
+	margin-top: 1rem;
+	margin-bottom: 1rem;
 }
 
 .article-rich-content pre {
-  background: #1f2937;
-  color: #f9fafb;
-  border-radius: 0.5rem;
-  padding: 1rem;
-  overflow-x: auto;
+	background: #1f2937;
+	color: #f9fafb;
+	border-radius: 0.5rem;
+	padding: 1rem;
+	overflow-x: auto;
 }
 
 .article-rich-content a {
-  text-decoration: underline;
+	text-decoration: underline;
 }
