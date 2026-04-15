@@ -1,32 +1,36 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
-  <!-- Background circle -->
-  <circle cx="100" cy="100" r="90" fill="#FFE6C7"/>
-  
-  <!-- House outline -->
-  <path d="M100 40L35 90v70h130V90L100 40z" fill="none" stroke="#454545" stroke-width="8" stroke-linejoin="round"/>
-  
-  <!-- Door -->
-  <path d="M85 160V110h30v50" fill="none" stroke="#454545" stroke-width="6" stroke-linejoin="round"/>
-  
-  <!-- Roof chimney -->
-  <path d="M140 75V40h15v50" fill="none" stroke="#454545" stroke-width="6" stroke-linejoin="round"/>
-  
-  <!-- Hammer -->
-  <g transform="rotate(45, 100, 110)">
-    <rect x="85" y="95" width="10" height="45" fill="#FFA559" rx="2" ry="2"/>
-    <path d="M75 85h30v15H75z" fill="#FFA559"/>
-    <path d="M70 85v15h5V85z" fill="#454545"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" fill="none">
+  <defs>
+    <linearGradient id="logo-bg" x1="24" y1="20" x2="232" y2="236" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#4A4A4A"/>
+      <stop offset="1" stop-color="#2E2E2E"/>
+    </linearGradient>
+    <linearGradient id="logo-accent" x1="77" y1="84" x2="175" y2="132" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FFA559"/>
+      <stop offset="1" stop-color="#FF8C3A"/>
+    </linearGradient>
+    <filter id="logo-shadow" x="0" y="0" width="256" height="256" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="6" stdDeviation="6" flood-color="#000000" flood-opacity="0.28"/>
+    </filter>
+  </defs>
+
+  <rect x="12" y="12" width="232" height="232" rx="52" fill="url(#logo-bg)"/>
+
+  <g filter="url(#logo-shadow)">
+    <circle cx="128" cy="128" r="84" fill="#FFE6C7"/>
   </g>
-  
-  <!-- Paintbrush -->
-  <g transform="rotate(-45, 100, 110)">
-    <rect x="95" y="90" width="10" height="50" fill="#454545" rx="2" ry="2"/>
-    <path d="M90 80h20v15s-5 5-10 5-10-5-10-5V80z" fill="#FFA559"/>
-    <path d="M95 75v5h10v-5l-5-10-5 10z" fill="#FFA559"/>
+
+  <path d="M74 124L128 80L182 124V184H74V124Z" fill="#FFF4E5" stroke="#454545" stroke-width="8" stroke-linejoin="round"/>
+  <path d="M90 112L128 86L166 112" stroke="url(#logo-accent)" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="114" y="136" width="28" height="48" rx="8" fill="#454545"/>
+
+  <g transform="rotate(-26 102 146)">
+    <rect x="94" y="116" width="16" height="54" rx="6" fill="#FFA559"/>
+    <path d="M88 110H116V124H88Z" fill="#454545"/>
+    <rect x="84" y="110" width="6" height="14" fill="#2F2F2F"/>
   </g>
-  
-  <!-- DIY Text -->
-  <g font-family="Arial, sans-serif" font-weight="bold">
-    <text x="100" y="180" fill="#454545" text-anchor="middle" font-size="18">DIY BLOG</text>
+
+  <g transform="translate(157 69)">
+    <path d="M0 20L10 10L20 20L10 30Z" fill="#FFA559"/>
+    <path d="M10 0V8M10 32V40M0 10H-8M20 10H28M3 3L-3 -3M17 17L23 23M17 3L23 -3M3 17L-3 23" stroke="#454545" stroke-width="3" stroke-linecap="round"/>
   </g>
 </svg>

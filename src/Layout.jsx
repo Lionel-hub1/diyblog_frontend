@@ -23,9 +23,13 @@ const Layout = () => {
             to="/"
             className="flex items-center mb-4 font-medium title-font md:mb-0"
           >
-            <img src="/icons/logo.svg" alt="DIY Blog Logo" className="w-10 h-10 mr-2" />
-            <span className="text-3xl font-black text-[#FFE6C7]">DIY</span>{" "}
-            <span className="text-3xl font-semibold text-[#FFA559]">Blog</span>
+            <img
+              src="/icons/logo.svg"
+              alt="DIY Blog Logo"
+              className="w-11 h-11 mr-3 shrink-0"
+            />
+            <span className="text-3xl tracking-tight font-black text-[#FFE6C7]">DIY</span>{" "}
+            <span className="text-3xl tracking-tight font-semibold text-[#FFA559]">Blog</span>
           </Link>
           <nav className="md:ml-auto flex flex-wrap font-semibold items-center text-[#FFE6C7] justify-center space-x-10">
             {paths.map((path, index) => {
