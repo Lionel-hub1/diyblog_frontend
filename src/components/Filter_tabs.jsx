@@ -61,8 +61,8 @@ const FilterTabs = () => {
               key={tab.id}
               onClick={() => handleTabClick(tab.name)}
               className={`${activeTab === tab.name
-                  ? "bg-[#FFA559] text-white shadow-md"
-                  : "bg-gray-100 text-[#454545] hover:bg-gray-200"
+                ? "bg-[#FFA559] text-white shadow-md"
+                : "bg-gray-100 text-[#454545] hover:bg-gray-200"
                 } px-4 py-2 rounded-full text-sm font-medium transition-all duration-300`}
             >
               {tab.name}
@@ -160,7 +160,17 @@ const FilterTabs = () => {
             ))}
           </div>
         ) : (
-          <div className="py-10 text-center">
+          <div className="flex flex-col items-center justify-center py-16 text-center">
+            <svg
+              className="w-12 h-12 mb-3 text-gray-300"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10l4 4v10a2 2 0 01-2 2z"></path>
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 2v4h4"></path>
+            </svg>
             <p className="text-lg text-gray-500">
               No articles found in this category
             </p>

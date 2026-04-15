@@ -252,22 +252,28 @@ const Article = () => {
                   Related Articles
                 </h2>
 
-                <div className="space-y-4">
-                  {relatedArticles.map((relArticle, index) => (
-                    <Link to={`/blogs/${relArticle.id}`} key={index} className="block">
-                      <div className="flex items-center space-x-3 group">
-                        <div className="flex-shrink-0 w-16 h-16 rounded-md overflow-hidden">
-                          <img src={apiUrl + relArticle.image} alt="" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
+                {relatedArticles.length > 0 ? (
+                  <div className="space-y-4">
+                    {relatedArticles.map((relArticle, index) => (
+                      <Link to={`/blogs/${relArticle.id}`} key={index} className="block">
+                        <div className="flex items-center space-x-3 group">
+                          <div className="flex-shrink-0 w-16 h-16 rounded-md overflow-hidden">
+                            <img src={apiUrl + relArticle.image} alt="" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
+                          </div>
+                          <div className="flex-grow">
+                            <h3 className="font-medium text-gray-800 group-hover:text-[#FFA559] transition-colors">
+                              {relArticle.title}
+                            </h3>
+                          </div>
                         </div>
-                        <div className="flex-grow">
-                          <h3 className="font-medium text-gray-800 group-hover:text-[#FFA559] transition-colors">
-                            {relArticle.title}
-                          </h3>
-                        </div>
-                      </div>
-                    </Link>
-                  ))}
-                </div>
+                      </Link>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="py-4 text-center text-gray-400">
+                    <p className="text-sm italic">No related articles found yet.</p>
+                  </div>
+                )}
               </div>
             </div>
           </div>

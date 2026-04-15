@@ -69,8 +69,8 @@ const Blogs = () => {
               key={index}
               onClick={() => setSelectedCategory(category)}
               className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${selectedCategory === category
-                  ? "bg-[#FFA559] text-white shadow-md"
-                  : "bg-white text-[#454545] border border-gray-200 hover:border-[#FFA559]"
+                ? "bg-[#FFA559] text-white shadow-md"
+                : "bg-white text-[#454545] border border-gray-200 hover:border-[#FFA559]"
                 }`}
             >
               {category}
@@ -134,12 +134,22 @@ const Blogs = () => {
             ))}
           </div>
         ) : (
-          <div className="py-16 text-center">
+          <div className="flex flex-col items-center justify-center py-20 text-center">
+            <svg
+              className="w-16 h-16 mb-4 text-gray-400"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10l4 4v10a2 2 0 01-2 2z"></path>
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 2v4h4"></path>
+            </svg>
             <h3 className="text-xl font-medium text-gray-600">
               No articles found in this category
             </h3>
             <p className="mt-2 text-gray-500">
-              Try selecting a different category
+              Try selecting a different category or check back later for new content!
             </p>
           </div>
         )}
